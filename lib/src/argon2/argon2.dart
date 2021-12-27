@@ -12,6 +12,10 @@ Argon2FfiFlutter initArgon2() {
     Argon2.resolveLibraryForceDynamic = true;
   }
 
+  if (Platform.isAndroid) {
+    return Argon2FfiFlutter();
+  }
+
   return Argon2FfiFlutter(resolveLibrary: (libraryName) {
     var insideSdk = path.join('znn_sdk_dart', 'lib', 'src', 'argon2', 'blobs');
     var currentPathListParts = path.split(Directory.current.path);
